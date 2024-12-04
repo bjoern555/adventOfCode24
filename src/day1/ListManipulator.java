@@ -20,7 +20,7 @@ public class ListManipulator {
     }
 
     private static void readFile() throws FileNotFoundException {
-        File file = new File("resources/Lists.txt");
+        File file = new File("resources/lists-day1.txt");
         Scanner scanner = new Scanner(new FileReader(file));
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();

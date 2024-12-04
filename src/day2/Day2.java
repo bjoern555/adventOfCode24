@@ -30,7 +30,6 @@ public class Day2 {
         scanner.close();
     }
 
-
     private static void calculateSafeReports(boolean withDamper) {
         int safeReports = 0;
         for (List<Integer> list : lists) {

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class ListManipulator {
+public class Day1 {
     static List<Integer> leftList = new ArrayList<>();
     static List<Integer> rightList = new ArrayList<>();
 
@@ -20,7 +20,7 @@ public class ListManipulator {
     }
 
     private static void readFile() throws FileNotFoundException {
-        File file = new File("resources/lists-day1.txt");
+        File file = new File("resources/input-day1.txt");
         Scanner scanner = new Scanner(new FileReader(file));
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();

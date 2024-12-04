@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class ListManipulator {
+public class Day2 {
     static List<List<Integer>> lists = new ArrayList<>();
 
     public static void main(String[] args) throws FileNotFoundException {
@@ -18,7 +18,7 @@ public class ListManipulator {
     }
 
     private static void readFile() throws FileNotFoundException {
-        File file = new File("resources/lists-day2.txt");
+        File file = new File("resources/input-day2.txt");
         Scanner scanner = new Scanner(new FileReader(file));
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();

@@ -1,6 +1,5 @@
 package src.day6;
 
-import javax.swing.text.Position;
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,7 +18,13 @@ public class Day6 {
         for (char[] row : map) {
             System.out.println(row);
         }
-        sum += countGuardPath();
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[0].length; j++) {
+                if (map[i][j] == 'X') {
+                    sum++;
+                }
+            }
+        }
         System.out.println(sum);
     }
 
@@ -54,16 +59,17 @@ public class Day6 {
         Point tempPosition = new Point(currentPosition.x, currentPosition.y);
         Point lastPosition = new Point(currentPosition.x, currentPosition.y);
 
-        while (theresSpace(tempPosition) && map[tempPosition.y][tempPosition.x] != '#') { //TODO why map[tempPosition.y][tempPosition.x] x und y ??
+        while (theresSpace(tempPosition) && map[tempPosition.x][tempPosition.y] != '#') {
             map[tempPosition.x][tempPosition.y] = 'X';
             lastPosition.x = tempPosition.x;
             lastPosition.y = tempPosition.y;
             tempPosition.x += direction.getDx();
             tempPosition.y += direction.getDy();
         }
-        if (map[tempPosition.y][tempPosition.x] != '#') {
+        if (map[tempPosition.x][tempPosition.y] == '#') {
             return lastPosition;
         } else {
+            map[tempPosition.x][tempPosition.y] = 'X';
             return null;
         }
     }
@@ -81,10 +87,6 @@ public class Day6 {
             }
         }
         return new Point(0, 0);
-    }
-
-    private static int countGuardPath() {
-        return 0;
     }
 
     private enum Direction {

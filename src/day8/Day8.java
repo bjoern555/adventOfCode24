@@ -48,14 +48,17 @@ public class Day8 {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map.length; j++) {
                 if (map[i][j] != '.') {
-                    for (int k = 0; k < map.length; k++) {
-                        for (int l = 0; l < map.length; l++) {
-                            if (map[i][j] == map[k][l] && !(i == k && j == l)) {
-                                new Point(i, j);
-                                createAntinode(new Point(i, j), new Point(k, l));
-                            }
-                        }
-                    }
+                    checkEveryMapPoint(i, j);
+                }
+            }
+        }
+    }
+
+    private static void checkEveryMapPoint(int i, int j) {
+        for (int k = 0; k < map.length; k++) {
+            for (int l = 0; l < map.length; l++) {
+                if (map[i][j] == map[k][l] && !(i == k && j == l)) {
+                    createAntinode(new Point(i, j), new Point(k, l));
                 }
             }
         }
@@ -64,8 +67,10 @@ public class Day8 {
     private static void createAntinode(Point from, Point to) {
         int rowDifference = to.x - from.x;
         int colDifference = to.y - from.y;
-        if (to.x + rowDifference >= 0 && to.x + rowDifference < map.length && to.y + colDifference >= 0 && to.y + colDifference < map.length) {
-            antinodes.add(new Point(to.x + rowDifference, to.y + colDifference));
+        while (from.x + rowDifference >= 0 && from.x + rowDifference < map.length && from.y + colDifference >= 0 && from.y + colDifference < map.length) {
+            antinodes.add(new Point(from.x + rowDifference, from.y + colDifference));
+            from.x += rowDifference;
+            from.y += colDifference;
         }
     }
 }
